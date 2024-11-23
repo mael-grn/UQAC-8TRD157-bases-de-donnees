@@ -1,3 +1,8 @@
+const printResult = (res) => {
+    if (!res || res.length === 0) print("Aucun résultat trouvé");
+    else res.forEach(doc => printjson(doc));
+}
+
 print("\n\n---------------");
 print("Partie 1 du TP3");
 print("---------------\n");
@@ -16,11 +21,9 @@ print("------------------------------------------\n")
 
 etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
-let reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
+reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
 print("-> Résultats de la recherche: ")
-print("-> Il y a " + professeurs.count() + " professeurs dans la base de données\n");
-
-reponse.forEach(doc => printjson(doc));
+printResult(reponse);
 
 // 2 - trouvez le professeur Luc Lamontagne
 print("\n----------------------------------------")
@@ -30,7 +33,7 @@ print("----------------------------------------\n")
 luc_lamontagne = {"Nom": "Lamontagne", "Prenom": "Luc"}
 response = professeurs.find(luc_lamontagne)
 print("-> Résultats de la recherche: ")
-reponse.forEach(doc => printjson(doc));
+printResult(reponse);
 
 // pourtant il y a bel et bien un professeur nommé Luc Lamontagne. quel est le problème ??
 
