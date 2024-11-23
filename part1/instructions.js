@@ -1,8 +1,8 @@
 const printResult = (res) => {
-    if (!res) print("Aucun résultat trouvé");
+    if (!res) print("-> Aucun résultat trouvé");
     else {
         let arrayRes = res.toArray(); // Convertit le curseur en tableau et le stocker, car le curseur ne peut être parcouru qu'une seule fois
-        if (arrayRes.length === 0) print("Aucun résultat trouvé");
+        if (arrayRes.length === 0) print("-> Aucun résultat trouvé");
         else arrayRes.forEach((doc, index) => {
             print(JSON.stringify(doc, null, 2)); // Affiche chaque document formaté
         });
@@ -50,9 +50,9 @@ printResult(reponse);
 // pourtant il y a bel et bien un professeur nommé Luc Lamontagne. quel est le problème ??
 print("\nNous remarquons que nous ne trouvons pas le professeur dans la base de données, même s'il est présent.")
 print("Cela est dû au fait que nous filtrons les résultats en utilisant les clés 'Nom' et 'Prenom' au lieu de 'nom' et 'prenom'.")
-print("Réessayons en utilisant les clés 'nom' et 'prenom' : \n")
+print("Réessayons en utilisant les clés 'nom' et 'prenom' :")
 luc_lamontagne_corrige = {"nom": "Lamontagne", "prenom": "Luc"}
-response = professeurs.find(luc_lamontagne_corrige)
+response = professeurs.find(luc_lamontagne_corrige, champs_a_conserver)
 printResult(reponse);
 
 // 3 - Enlevez les cours donnés à la session précédente par Richard Khoury
