@@ -32,7 +32,7 @@ print("Résultats de la recherche: ")
 printResult(reponse);
 
 print("\nNOTE: Il semble que le professeur Étienne Tremblay ne soit pas dans la base de données fournie avec les fichiers du TP.")
-print("Cependant, il existe un professeur nommé Etienne Marceau : \n")
+print("Cependant, il existe un professeur nommé Etienne Marceau :")
 etienne_marceau = {"nom": "Marceau", "prenom": "Etienne"}
 reponse = professeurs.find(etienne_marceau, champs_a_conserver)
 printResult(reponse);
@@ -51,9 +51,8 @@ printResult(reponse);
 print("\nNous remarquons que nous ne trouvons pas le professeur dans la base de données, même s'il est présent.")
 print("Cela est dû au fait que nous filtrons les résultats en utilisant les clés 'Nom' et 'Prenom' au lieu de 'nom' et 'prenom'.")
 print("Réessayons en utilisant les clés 'nom' et 'prenom' :")
-luc_lamontagne_corrige = {"nom": "Lamontagne", "prenom": "Luc"}
-response = professeurs.find(luc_lamontagne_corrige, champs_a_conserver)
-printResult(reponse);
+luc_lamontagne_corrige = {"nom": "Lamontagne", "prenom": "Luc"};
+printResult(professeurs.find(luc_lamontagne_corrige));
 
 // 3 - Enlevez les cours donnés à la session précédente par Richard Khoury
 
