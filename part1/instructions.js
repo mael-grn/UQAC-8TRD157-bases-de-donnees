@@ -27,15 +27,13 @@ print("------------------------------------------\n")
 
 etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
-reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
 print("Résultats de la recherche: ")
-printResult(reponse);
+printResult(professeurs.find(etienne_tremblay, champs_a_conserver));
 
 print("\nNOTE: Il semble que le professeur Étienne Tremblay ne soit pas dans la base de données fournie avec les fichiers du TP.")
 print("Cependant, il existe un professeur nommé Etienne Marceau :")
 etienne_marceau = {"nom": "Marceau", "prenom": "Etienne"}
-reponse = professeurs.find(etienne_marceau, champs_a_conserver)
-printResult(reponse);
+printResult(professeurs.find(etienne_marceau, champs_a_conserver));
 
 // 2 - trouvez le professeur Luc Lamontagne
 print("\n----------------------------------------")
@@ -43,9 +41,8 @@ print("2 - trouver le professeur Luc Lamontagne")
 print("----------------------------------------\n")
 
 luc_lamontagne = {"Nom": "Lamontagne", "Prenom": "Luc"}
-response = professeurs.find(luc_lamontagne)
 print("Résultats de la recherche: ")
-printResult(reponse);
+printResult(professeurs.find(luc_lamontagne));
 
 // pourtant il y a bel et bien un professeur nommé Luc Lamontagne. quel est le problème ??
 print("\nNous remarquons que nous ne trouvons pas le professeur dans la base de données, même s'il est présent.")
