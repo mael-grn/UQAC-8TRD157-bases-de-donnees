@@ -1,8 +1,9 @@
+console.log("Instructions pour la partie 1");
+
 show dbs
 use uqac
 show collections
 
-print("TEST")
 console.log("Connecté à la base de données uqac");
 
 professeurs = db.professeurs
