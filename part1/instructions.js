@@ -1,6 +1,9 @@
 const printResult = (res) => {
     if (!res || res.toArray().length === 0) print("Aucun résultat trouvé");
-    else res.forEach(doc => printjson(doc));
+    else res.forEach((doc) => {
+        print("\t");
+        printjson(doc)
+    });
 }
 
 print("\n\n---------------");
@@ -19,7 +22,7 @@ print("------------------------------------------")
 print("1 - trouver le professeur Étienne Tremblay")
 print("------------------------------------------\n")
 
-etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
+etienne_tremblay = {"nom": "Marceau", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
 reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
 print("-> Résultats de la recherche: ")
@@ -50,3 +53,5 @@ printResult(reponse);
 // 8 - Est-ce qu'il serait possible de normaliser les noms dans la base de données pour que les prénoms soient en minuscule et les noms en majuscule? 
 
 // 9 - A quelle date a été ajouté le professeur Richard Khoury dans la base de données ?
+
+print("\n\n");
