@@ -110,6 +110,12 @@ print("Résultats de la recherche :")
 printResult(professeurs.find(departement_di));
 
 // 7 - Est-ce qu'il serait possible de n'avoir que leur nom et prénom ?
+print("\n------------------------------------------------------------")
+print("7 - Obtenir seulement le nom et le prénom des professeurs DI")
+print("------------------------------------------------------------\n")
+
+print("Résultats de la recherche :")
+printResult(professeurs.find(departement_di, {"nom": true, "prenom": true, "_id": false}));
 
 // 8 - Est-ce qu'il serait possible de normaliser les noms dans la base de données pour que les prénoms soient en minuscule et les noms en majuscule? 
 
