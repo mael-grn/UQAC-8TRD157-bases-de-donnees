@@ -1,7 +1,9 @@
 const printResult = (res) => {
-    if (!res || res.toArray().length === 0) print("Aucun résultat trouvé");
+    if (!res) print("Aucun résultat trouvé");
     else {
-        res.toArray().forEach((doc, index) => {
+        let arrayRes = res.toArray();
+        if (arrayRes.length === 0) print("Aucun résultat trouvé");
+        else arrayRes.forEach((doc, index) => {
             print(`#${index + 1}: ` + JSON.stringify(doc, null, 2)); // Affiche chaque document formaté
         });
     }
