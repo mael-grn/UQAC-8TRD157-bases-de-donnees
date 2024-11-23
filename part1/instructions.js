@@ -1,6 +1,9 @@
 const printResult = (res) => {
     if (!res || res.toArray().length === 0) print("Aucun résultat trouvé");
-    else res.forEach((doc) => print("\t " + doc));
+    else {
+        print("Résultats: ");
+        res.forEach((doc) => print("\t " + doc));
+    }
 }
 
 print("\n\n---------------");
