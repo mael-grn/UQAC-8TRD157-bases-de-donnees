@@ -2,16 +2,25 @@ show dbs
 use uqac
 show collections
 
+console.log("Connecté à la base de données uqac");
+
 professeurs = db.professeurs
 professeurs.count()
+
+console.log("\t-> Il y a " + professeurs.count() + " professeurs dans la base de données\n");
+
 // 1 - trouver le professeur Étienne Tremblay
+console.log("1 - trouver le professeur Étienne Tremblay")
+
 etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
-professeurs.find(etienne_tremblay, champs_a_conserver)
-
+reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
+console.log("\t-> " + reponse)
 // 2 - trouvez le professeur Luc Lamontagne
+console.log("2 - trouver le professeur Luc Lamontagne")
 luc_lamontagne = {"Nom": "Lamontagne", "Prenom": "Luc"}
 professeurs.find(luc_lamontagne)
+console.log("\t-> " + reponse)
 // pourtant il y a bel et bien un professeur nommé Luc Lamontagne. quel est le problème ??
 
 // 3 - Enlevez les cours donnés à la session précédente par Richard Khoury

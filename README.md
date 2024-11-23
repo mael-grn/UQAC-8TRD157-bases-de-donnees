@@ -24,8 +24,8 @@
 
 * Executer les commandes suivantes : 
 ```bash
-mongo bd_uqac /TP3/part1/instructions.js
+mongosh bd_uqac /TP3/part1/instructions.js
 ```
 ```bash
-mongo bd_uqac /TP3/part2/instructions.js
+mongosh bd_uqac /TP3/part2/instructions.js
 ```
