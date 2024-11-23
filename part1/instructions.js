@@ -1,16 +1,8 @@
 const printResult = (res) => {
-    if (!res) {
-        print("Aucun résultat trouvé");
-        return;
-    }
-
-    let results = res.toArray(); // Convertir le curseur en tableau
-    if (results.length === 0) {
-        print("Aucun résultat trouvé");
-    } else {
-        print("Résultats trouvés :");
-        results.forEach((doc, index) => {
-            print(`\t#${index + 1}: ` + JSON.stringify(doc, null, 2)); // Affiche chaque document formaté
+    if (!res || res.toArray().length === 0) print("Aucun résultat trouvé");
+    else {
+        res.toArray().forEach((doc, index) => {
+            print(`#${index + 1}: ` + JSON.stringify(doc, null, 2)); // Affiche chaque document formaté
         });
     }
 };
