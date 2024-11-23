@@ -1,6 +1,6 @@
 const printResult = (res) => {
     if (!res || res.toArray().length === 0) print("Aucun résultat trouvé");
-    else res.forEach((doc) => print("\t " + JSON.stringify(doc)));
+    else res.forEach((doc) => print("\t " + doc));
 }
 
 print("\n\n---------------");
