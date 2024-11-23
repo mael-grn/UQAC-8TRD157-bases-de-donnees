@@ -14,11 +14,13 @@ print("------------------------------------------")
 print("1 - trouver le professeur Étienne Tremblay")
 print("------------------------------------------\n")
 
-etienne_tremblay = {"nom": "Girard-Nault", "prenom": "Jimmy"}
+etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
 let reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
 print("-> Résultats de la recherche: ")
-print("\t" + JSON.stringify(response.toArray()))
+print("-> Il y a " + professeurs.count() + " professeurs dans la base de données\n");
+
+reponse.forEach(doc => printjson(doc));
 
 // 2 - trouvez le professeur Luc Lamontagne
 print("\n----------------------------------------")
@@ -28,7 +30,7 @@ print("----------------------------------------\n")
 luc_lamontagne = {"Nom": "Lamontagne", "Prenom": "Luc"}
 response = professeurs.find(luc_lamontagne)
 print("-> Résultats de la recherche: ")
-print("\t" + JSON.stringify(response.toArray()))
+reponse.forEach(doc => printjson(doc));
 
 // pourtant il y a bel et bien un professeur nommé Luc Lamontagne. quel est le problème ??
 
