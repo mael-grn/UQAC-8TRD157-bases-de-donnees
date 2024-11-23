@@ -1,11 +1,19 @@
 const printResult = (res) => {
-    if (!res || res.toArray().length === 0) print("Aucun résultat trouvé");
-    else {
-        print(res.toString());
-        if (res.toArray()) res.toArray().forEach((doc) => print("\t " + doc + JSON.stringify(doc)));
-        else print("\t " + res + JSON.stringify(res));
+    if (!res) {
+        print("Aucun résultat trouvé");
+        return;
     }
-}
+
+    let results = res.toArray(); // Convertir le curseur en tableau
+    if (results.length === 0) {
+        print("Aucun résultat trouvé");
+    } else {
+        print("Résultats trouvés :");
+        results.forEach((doc, index) => {
+            print(`\t#${index + 1}: ` + JSON.stringify(doc, null, 2)); // Affiche chaque document formaté
+        });
+    }
+};
 
 print("\n\n---------------");
 print("Partie 1 du TP3");
