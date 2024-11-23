@@ -125,7 +125,7 @@ printResult(professeurs.find(departement_di, {"nom": true, "prenom": true, "_id"
 // 8 - Est-ce qu'il serait possible de normaliser les noms dans la base de données pour que les prénoms soient en minuscule et les noms en majuscule? 
 print("\n-----------------------------------------------")
 print("8 - Normaliser les noms dans la base de données")
-print("-------------------------------------- ----------\n")
+print("-----------------------------------------------\n")
 
 print("Nous voulons normaliser les noms dans la base de données pour que les prénoms soient en minuscule et les noms en majuscule.")
 print("Voici les données avant normalisation (utilisation de findOne, car il n'est pas utile d'afficher l'ensemble des données) :")
@@ -148,5 +148,13 @@ print("\nDonnées après normalisation :")
 printResult(professeurs.findOne());
 
 // 9 - A quelle date a été ajouté le professeur Richard Khoury dans la base de données ?
+print("\n------------------------------------------------")
+print("9 - Rechercher la date d'ajout de Richard Khoury")
+print("------------------------------------------------\n")
+
+print("Recherchons la date d'ajout de Richard Khoury...")
+let professeur = professeurs.findOne(richard_khoury);
+let dateAjout = professeur._id.getTimestamp();
+print("Date d'ajout de Richard Khoury: " + dateAjout);
 
 print("\n\n");
