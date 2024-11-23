@@ -53,19 +53,32 @@ printResult(professeurs.find(luc_lamontagne_corrige));
 
 // 3 - Enlevez les cours donnés à la session précédente par Richard Khoury
 print("\n-----------------------------------------------------------------------")
-print("2 - Enlever les cours donnés à la session précédente par Richard Khoury")
+print("3 - Enlever les cours donnés à la session précédente par Richard Khoury")
 print("-----------------------------------------------------------------------\n")
 
 print("\nActuellement, voici les données de Richard Khoury :")
 richard_khoury = {"nom": "Khoury", "prenom": "Richard"};
 printResult(professeurs.find(richard_khoury));
 
-print("\nSupprimons les cours donnés à la session précédente par Richard Khoury :")
+print("\nSupprimons les cours donnés à la session précédente par Richard Khoury...")
 professeurs.updateMany(richard_khoury, {$unset: {"cours_derniere_session": ""}});
+print("Données supprimées.");
+
 print("\nDonnées de Richard Khoury après suppression :")
 printResult(professeurs.find(richard_khoury));
 
 // 4 - Ajouter un nouveau professeur de votre choix. Il devrait au moins avoir un nom, prenom et une date de naissance ?
+print("\n------------------------------------------------")
+print("4 - Ajouter un nouveau professeur de votre choix")
+print("------------------------------------------------\n")
+
+print("\nNous allons ajouter un nouveau professeur nommé 'Jean Dupont' à la base de données, avec la date de naissance 01/01/1970...")
+jean_dupont = {"nom": "Dupont", "prenom": "Jean", "date_naissance": new Date("1970-01-01")};
+professeurs.insertOne(jean_dupont);
+print("Professeur ajouté.");
+
+print("\nDonnées de Jean Dupont après ajout :")
+printResult(professeurs.find(jean_dupont));
 
 // 5 - Il semble qu'il y ait un professeur qui soit en double. Est-ce possible d'enlever la deuxieme occurence ? 
 
