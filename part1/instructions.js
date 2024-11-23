@@ -132,8 +132,17 @@ print("Voici les données avant normalisation (utilisation de findOne, car il n'
 printResult(professeurs.findOne());
 
 print("\nNormalisons les noms dans la base de données...")
-professeurs.updateMany({}, { $set: { "nom": { $toUpper: "$nom" }, "prenom": { $toLower: "$prenom" } } });
-print("Noms normalisés.");
+professeurs.updateMany(
+    {},
+    [
+        { 
+            $set: {
+                "nom": { $toUpper: "$nom" },
+                "prenom": { $toLower: "$prenom" }
+            }
+        }
+    ]
+);print("Noms normalisés.");
 
 print("\nDonnées après normalisation :")
 printResult(professeurs.findOne());
