@@ -118,6 +118,20 @@ print("Résultats de la recherche :")
 printResult(professeurs.find(departement_di, {"nom": true, "prenom": true, "_id": false}));
 
 // 8 - Est-ce qu'il serait possible de normaliser les noms dans la base de données pour que les prénoms soient en minuscule et les noms en majuscule? 
+print("\n-----------------------------------------------")
+print("8 - Normaliser les noms dans la base de données")
+print("-------------------------------------- ----------\n")
+
+print("Nous voulons normaliser les noms dans la base de données pour que les prénoms soient en minuscule et les noms en majuscule.")
+print("Voici les données avant normalisation (utilisation de findOne, car il n'est pas utile d'afficher l'ensemble des données) :")
+printResult(professeurs.findOne());
+
+print("\nNormalisons les noms dans la base de données...")
+professeurs.updateMany({}, { $set: { "nom": { $toUpper: "$nom" }, "prenom": { $toLower: "$prenom" } } });
+print("Noms normalisés.");
+
+print("\nDonnées après normalisation :")
+printResult(professeurs.findOne());
 
 // 9 - A quelle date a été ajouté le professeur Richard Khoury dans la base de données ?
 
