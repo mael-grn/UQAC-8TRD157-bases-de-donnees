@@ -56,7 +56,7 @@ print("\n-----------------------------------------------------------------------
 print("3 - Enlever les cours donnés à la session précédente par Richard Khoury")
 print("-----------------------------------------------------------------------\n")
 
-print("\nActuellement, voici les données de Richard Khoury :")
+print("Actuellement, voici les données de Richard Khoury :")
 richard_khoury = {"nom": "Khoury", "prenom": "Richard"};
 printResult(professeurs.find(richard_khoury));
 
@@ -72,7 +72,7 @@ print("\n------------------------------------------------")
 print("4 - Ajouter un nouveau professeur de votre choix")
 print("------------------------------------------------\n")
 
-print("\nNous allons ajouter un nouveau professeur nommé 'Jean Dupont' à la base de données, avec la date de naissance 01/01/1970...")
+print("Nous allons ajouter un nouveau professeur nommé 'Jean Dupont' à la base de données, avec la date de naissance 01/01/1970...")
 jean_dupont = {"nom": "Dupont", "prenom": "Jean", "date_naissance": new Date("1970-01-01")};
 professeurs.insertOne(jean_dupont);
 print("Professeur ajouté.");
@@ -81,7 +81,15 @@ print("\nDonnées de Jean Dupont après ajout :")
 printResult(professeurs.find(jean_dupont));
 
 // 5 - Il semble qu'il y ait un professeur qui soit en double. Est-ce possible d'enlever la deuxieme occurence ? 
+print("\n-------------------------------------")
+print("5 - Supprimer un professeur en double")
+print("-------------------------------------\n")
 
+print("Recherchons quel professeur est en double...")
+printResult(professeurs.aggregate([
+    { $group: { _id: { nom: "$nom", prenom: "$prenom" }, count: { $sum: 1 } } },
+    { $match: { count: { $gt: 1 } } }
+]));
 // 6 - Comment trouver tous les professeurs d'un département commençant par DI - (par exemple DIM) ?
 
 // 7 - Est-ce qu'il serait possible de n'avoir que leur nom et prénom ?
