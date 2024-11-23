@@ -52,6 +52,18 @@ luc_lamontagne_corrige = {"nom": "Lamontagne", "prenom": "Luc"};
 printResult(professeurs.find(luc_lamontagne_corrige));
 
 // 3 - Enlevez les cours donnés à la session précédente par Richard Khoury
+print("\n-----------------------------------------------------------------------")
+print("2 - Enlever les cours donnés à la session précédente par Richard Khoury")
+print("-----------------------------------------------------------------------\n")
+
+print("\nActuellement, voici les données de Richard Khoury :")
+richard_khoury = {"nom": "Khoury", "prenom": "Richard"};
+printResult(professeurs.find(richard_khoury));
+
+print("\nSupprimons les cours donnés à la session précédente par Richard Khoury :")
+professeurs.updateMany(richard_khoury, {$unset: {"cours_derniere_session": ""}});
+print("\nDonnées de Richard Khoury après suppression :")
+printResult(professeurs.find(richard_khoury));
 
 // 4 - Ajouter un nouveau professeur de votre choix. Il devrait au moins avoir un nom, prenom et une date de naissance ?
 
