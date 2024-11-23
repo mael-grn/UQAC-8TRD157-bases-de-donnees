@@ -1,24 +1,35 @@
-print("Instructions pour la partie 1");
+print("\n\n---------------");
+print("Partie 1 du TP3");
+print("---------------\n");
 
-print("Connecté à la base de données uqac");
+print("Utilisation de mongoDB server version 8.0.3\n\n")
 
 professeurs = db.professeurs
-professeurs.count()
+professeurs.countDocuments()
 
 print("\t-> Il y a " + professeurs.count() + " professeurs dans la base de données\n");
 
 // 1 - trouver le professeur Étienne Tremblay
+print("------------------------------------------")
 print("1 - trouver le professeur Étienne Tremblay")
+print("------------------------------------------\n")
 
 etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
 reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
-print("\t-> " + reponse)
+print("\t-> Résultats de la recherche: ")
+reponse.forEach(doc => printjson(doc));
+
 // 2 - trouvez le professeur Luc Lamontagne
+print("\n----------------------------------------")
 print("2 - trouver le professeur Luc Lamontagne")
+print("----------------------------------------\n")
+
 luc_lamontagne = {"Nom": "Lamontagne", "Prenom": "Luc"}
-professeurs.find(luc_lamontagne)
-print("\t-> " + reponse)
+response = professeurs.find(luc_lamontagne)
+print("\t-> Résultats de la recherche: ")
+reponse.forEach(doc => printjson(doc));
+
 // pourtant il y a bel et bien un professeur nommé Luc Lamontagne. quel est le problème ??
 
 // 3 - Enlevez les cours donnés à la session précédente par Richard Khoury

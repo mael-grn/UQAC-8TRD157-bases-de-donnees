@@ -9,7 +9,7 @@
 **Executer la commande suivante pour chaque étapes :**
   ```bash
   mongoimport --db bd_uqac \
-               --collection profs \
+               --collection professeurs \
                --file bd_uqac.json \
                --jsonArray
 ```
