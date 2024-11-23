@@ -90,14 +90,24 @@ printResult(professeurs.aggregate([
     { $group: { _id: { nom: "$nom", prenom: "$prenom" }, count: { $sum: 1 } } },
     { $match: { count: { $gt: 1 } } }
 ]));
+
 print("\nNous remarquons que le professeur en double est 'Philippe Gregoire'.")
-print("Supprimons une occurrence de Philippe Gregoire...")
+
+print("\nSupprimons une occurrence de Philippe Gregoire...")
 professeurs.deleteOne({"nom": "Gregoire", "prenom": "Philippe"});
 print("Professeur supprimé.");
+
 print("\nRésultat après suppression :")
 printResult(professeurs.find({"nom": "Gregoire", "prenom": "Philippe"}));
 
 // 6 - Comment trouver tous les professeurs d'un département commençant par DI - (par exemple DIM) ?
+print("\n------------------------------------------------------------")
+print("6 - Trouver les professeurs du département commençant par DI")
+print("------------------------------------------------------------\n")
+
+departement_di = {"departement": /^DI/};
+print("Résultats de la recherche :")
+printResult(professeurs.find(departement_di));
 
 // 7 - Est-ce qu'il serait possible de n'avoir que leur nom et prénom ?
 
