@@ -1,13 +1,18 @@
 const printResult = (res) => {
-    if (!res) print("-> Aucun résultat trouvé");
-    else {
-        let arrayRes = res.toArray(); // Convertit le curseur en tableau et le stocker, car le curseur ne peut être parcouru qu'une seule fois
-        if (arrayRes.length === 0) print("-> Aucun résultat trouvé");
-        else arrayRes.forEach((doc, index) => {
-            print(JSON.stringify(doc, null, 2)); // Affiche chaque document formaté
-        });
+    if (!res) return print("-> Aucun résultat trouvé");
+
+    // Si `res` est un curseur, on le convertis en tableau
+    const arrayRes = typeof res.toArray === "function" ? res.toArray() : [res];
+
+    if (arrayRes.length === 0) {
+        print("-> Aucun résultat trouvé");
+    } else {
+        arrayRes.forEach((doc, index) =>
+            print(JSON.stringify(doc, null, 2))
+        );
     }
 };
+
 
 print("\n\n---------------");
 print("Partie 1 du TP3");
