@@ -1,5 +1,5 @@
 const printResult = (res) => {
-    if (!res || res.length === 0) print("Aucun résultat trouvé");
+    if (!res || res.toArray().length === 0) print("Aucun résultat trouvé");
     else res.forEach(doc => printjson(doc));
 }
 
@@ -23,7 +23,6 @@ etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
 reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
 print("-> Résultats de la recherche: ")
-print(response.length)
 printResult(reponse);
 
 // 2 - trouvez le professeur Luc Lamontagne
