@@ -18,7 +18,7 @@ etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
 let reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
 print("-> Résultats de la recherche: ")
-print("\t" + JSON.stringify(response))
+print("\t" + JSON.stringify(response.toArray()))
 
 // 2 - trouvez le professeur Luc Lamontagne
 print("\n----------------------------------------")
@@ -28,7 +28,7 @@ print("----------------------------------------\n")
 luc_lamontagne = {"Nom": "Lamontagne", "Prenom": "Luc"}
 response = professeurs.find(luc_lamontagne)
 print("-> Résultats de la recherche: ")
-print("\t" + JSON.stringify(response))
+print("\t" + JSON.stringify(response.toArray()))
 
 // pourtant il y a bel et bien un professeur nommé Luc Lamontagne. quel est le problème ??
 

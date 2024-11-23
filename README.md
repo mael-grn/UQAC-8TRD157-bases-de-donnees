@@ -10,7 +10,7 @@
   ```bash
   mongoimport --db bd_uqac \
                --collection professeurs \
-               --file bd_uqac.json \
+               --file part1/bd_uqac.json \
                --jsonArray
 ```
 
