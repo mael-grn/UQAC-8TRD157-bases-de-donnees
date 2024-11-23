@@ -1,7 +1,7 @@
 const printResult = (res) => {
     if (!res) print("Aucun résultat trouvé");
     else {
-        let arrayRes = res.toArray();
+        let arrayRes = res.toArray(); // Convertit le curseur en tableau et le stocker, car le curseur ne peut être parcouru qu'une seule fois
         if (arrayRes.length === 0) print("Aucun résultat trouvé");
         else arrayRes.forEach((doc, index) => {
             print(`#${index + 1}: ` + JSON.stringify(doc, null, 2)); // Affiche chaque document formaté
@@ -25,10 +25,16 @@ print("------------------------------------------")
 print("1 - trouver le professeur Étienne Tremblay")
 print("------------------------------------------\n")
 
-etienne_tremblay = {"nom": "Marceau", "prenom": "Etienne"}
+etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
 champs_a_conserver = {"nom":true, "prenom":true}
 reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
 print("-> Résultats de la recherche: ")
+printResult(reponse);
+
+print("\n NOTE: Il semble que le professeur Étienne Tremblay ne soit pas dans la base de données fournie avec les fichiers tu TP.")
+print("Cependant, il existe un professeur au prénom Etienne et au nom Marceau : \n")
+etienne_marceau = {"nom": "Marceau", "prenom": "Etienne"}
+reponse = professeurs.find(etienne_marceau, champs_a_conserver)
 printResult(reponse);
 
 // 2 - trouvez le professeur Luc Lamontagne
