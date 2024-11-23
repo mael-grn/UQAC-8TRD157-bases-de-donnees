@@ -14,7 +14,7 @@ print("------------------------------------------")
 print("1 - trouver le professeur Étienne Tremblay")
 print("------------------------------------------\n")
 
-etienne_tremblay = {"nom": "Tremblay", "prenom": "Etienne"}
+etienne_tremblay = {"nom": "Girard-Nault", "prenom": "Jimmy"}
 champs_a_conserver = {"nom":true, "prenom":true}
 let reponse = professeurs.find(etienne_tremblay, champs_a_conserver)
 print("-> Résultats de la recherche: ")
