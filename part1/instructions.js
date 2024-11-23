@@ -152,11 +152,13 @@ print("\n------------------------------------------------")
 print("9 - Rechercher la date d'ajout de Richard Khoury")
 print("------------------------------------------------\n")
 
+richard_khoury_new = {"nom": "KHOURY", "prenom": "richard"};
+
 print("Voici les données de Richard Khoury :")
-printResult(professeurs.findOne(richard_khoury));
+let professeur_richard_khoury = professeurs.findOne(richard_khoury_new);
+printResult(professeur_richard_khoury);
 
 print("\nNous pouvons extraire la date d'ajout de l'_id du document :")
-let professeur_richard_khoury = professeurs.findOne(richard_khoury);
 let dateAjout = professeur_richard_khoury._id.getTimestamp();
 print("Date d'ajout de Richard Khoury: " + dateAjout);
 
