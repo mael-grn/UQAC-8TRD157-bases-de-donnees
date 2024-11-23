@@ -1,7 +1,7 @@
 const printResult = (res) => {
     if (!res || res.toArray().length === 0) print("Aucun résultat trouvé");
     else {
-        print(JSON.parse(res)[0].prenom)
+        print(res.prenom)
         if (res.toArray()) res.toArray().forEach((doc) => print("\t " + doc + JSON.stringify(doc)));
         else print("\t " + res + JSON.stringify(res));
     }
