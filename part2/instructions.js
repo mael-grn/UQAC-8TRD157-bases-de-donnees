@@ -2,25 +2,35 @@ use uqac
 cours = db.cours
 
 // 0. Quel est le nom du cours 8TRD157 et quel est son enseignant?
-
-cours.find(
+print("\n-------------------------------------")
+print("0 - Nom du cours 8TRD157 et de son enseignant")
+print("-------------------------------------\n")
+printResult(cours.find(
         {"cours.sigle":"8TRD157"},
         { _id: false, "cours.nom":true, enseignat_actuel: true}
-)
+));
+
 // 1. Corrigez le typo dans le nom de la cle pour l'enseignant actuel du cours 8TRD157 
+print("\n-------------------------------------")
+print("1 - Corriger le nom de la cle pour l'enseignant actuel du cours 8TRD157")
+print("-------------------------------------\n")
+print("Modification de la typo ...");
+
 cours.update({"cours.sigle":"8TRD157"},
         {
                 $set: {enseignant_actuel:"Jimmy Girard-Nault"},
                 $unset :  {enseignat_actuel: 1}
         }
 )
-
 cours.find(
         {"cours.sigle":"8TRD157"},
         { _id: false, "cours.nom":true, enseignant_actuel: true}
 )
 
 // 2. Il faut incrémenter le compteur de 1 pour tous les cours de l'automne
+let compteur = 0;
+
+session_automne = {"session": "Automne"};
 
 
 
