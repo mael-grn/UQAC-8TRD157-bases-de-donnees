@@ -35,6 +35,15 @@ session_automne = {"session": "Automne"};
 
 
 // 3. Il semble qu'il manque trois professeurs pour le cours 8INF433. Veuillez ajouter "Michel Louvain", "Rick Ashtley" et "Elon Musk" à la liste.
+print("\n-------------------------------------")
+print("3 - Ajout des 3 professeurs au cours 8INF433")
+print("-------------------------------------\n")
+cours = {"cours.sigle" : "8INF433"};
+db.collection.updateOne(
+        { cours }, 
+        { $addToSet: { "anciens_enseignants": { $each: ["Michel Louvain", "Rick Ashtley", "Elon Musk"] } } }
+      );
+      
 
 // 4. Après avoir parlé au département des ressources humaines, vous décidez d'enlever "Michel Louvain" car ils ne sera plus professeur à l'université.
 
