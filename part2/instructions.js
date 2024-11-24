@@ -52,9 +52,8 @@ session_automne = {"session": "Automne"};
 print("\n-------------------------------------")
 print("3 - Ajout des 3 professeurs au cours 8INF433")
 print("-------------------------------------\n")
-cours = {"cours.sigle" : "8INF433"};
 cours.updateOne(
-        { cours }, 
+        {"cours.sigle": "8INF433"}, 
         { $addToSet: { "anciens_enseignants": { $each: ["Michel Louvain", "Rick Ashtley", "Elon Musk"] } } }
       );
 
