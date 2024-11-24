@@ -1,4 +1,18 @@
-use uqac
+const printResult = (res) => {
+if (!res) return print("-> Aucun résultat trouvé");
+
+// Si `res` est un curseur, on le convertis en tableau
+const arrayRes = typeof res.toArray === "function" ? res.toArray() : [res];
+
+if (arrayRes.length === 0) {
+        print("-> Aucun résultat trouvé");
+} else {
+        arrayRes.forEach((doc, index) =>
+        print(JSON.stringify(doc, null, 2))
+        );
+}
+};
+
 cours = db.cours
 
 // 0. Quel est le nom du cours 8TRD157 et quel est son enseignant?
