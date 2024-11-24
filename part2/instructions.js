@@ -73,14 +73,14 @@ print("\n-------------------------------------")
 print("4 - Supression du professeur Michel Louvain")
 print("-------------------------------------\n")
 
-cours.updateOne(
-        { $pull: { "anciens_enseignants": "Michel Louvain" } }
-    );
+// cours.updateOne(
+//         { $pull: { "anciens_enseignants": "Michel Louvain" } }
+//     );
     
-    printResult(cours.find(
-        { "cours.sigle": "8INF433" },
-        { _id: false, "cours.nom": true, "anciens_enseignants": true }
-));
+//     printResult(cours.find(
+//         { "cours.sigle": "8INF433" },
+//         { _id: false, "cours.nom": true, "anciens_enseignants": true }
+// ));
 
 // Pour préparer des réponse aux question fréquente des étudiants, vous décidez de faire une peu d'exploration dans vos données
 
@@ -105,7 +105,33 @@ printResult(cours.find(
     ).sort({ nombre_de_fois_offert: -1 }).limit(2));
     
 // 7. Quels cours sont donnés à l'automne et à l'hiver ?
+print("\n-------------------------------------")
+print("7 - Cours donnés à l'automne et à l'hiver")
+print("-------------------------------------\n")
+
+printResultat(cours.find(
+        {
+             "session": {$all: ["Automne", "Hiver"]}   
+        }
+))
 
 // 8. Quel est le cours ayant eu son local officiel au P1-6350 13 fois ?
+print("\n-------------------------------------")
+print("8 - Cours ayant eu son local officiel au P1-6350 13 fois")
+print("-------------------------------------\n")
 
+printResult(cours.find({
+        "local_officiel.nombre_de_cours": 13,
+        "local_officiel.local": "P1-6350"
+}))
 // 9. Quel est le cours le plus constant en terme de nombre d'étudiants? On cherche un cours qui a toujours eu entre 30 et 60 étudiants
+print("\n-------------------------------------")
+print("9 - Cours ayant eu un nombre d'étudiant constant")
+print("-------------------------------------\n")
+printResult(cours.find(
+        { "nombre_etudiants": { 
+                $not: {
+                        $elemMatch: {$gte: 30, $lte: 60} 
+                }
+        }
+    }));    
