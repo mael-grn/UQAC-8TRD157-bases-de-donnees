@@ -55,6 +55,8 @@ print(compteur);
 print("\n-------------------------------------")
 print("3 - Ajout des 3 professeurs au cours 8INF433")
 print("-------------------------------------\n")
+print("cours avant modif :")
+printResult(cours.find({"cours.sigle": "8INF433"}));
 cours.updateOne(
         {"cours.sigle": "8INF433"}, 
         { $addToSet: { "anciens_enseignants": { $each: ["Michel Louvain", "Rick Ashtley", "Elon Musk"] } } }
@@ -72,7 +74,6 @@ print("4 - Supression du professeur Michel Louvain")
 print("-------------------------------------\n")
 
 cours.updateOne(
-        { "cours.sigle": "8INF433" },
         { $pull: { "anciens_enseignants": "Michel Louvain" } }
     );
     
@@ -85,20 +86,23 @@ cours.updateOne(
 
 // 5. Combien de cours on eu moins de 2 enseignants ?
 print("\n-------------------------------------")
-print("5 - Supression du professeur Michel Louvain")
+print("5 - Cours qui ont eu au moins deux enseignants")
 print("-------------------------------------\n")
 
-let count = cours.countDocuments({
-        $expr: { $eq: [{ $size: "$anciens_enseignants" }, 1] }
+let nombre = cours.countDocuments({
+        $expr: { $gte: [{ $size: "$anciens_enseignants" }, 2] }
       });
-print('Nombre de cours qui ont eu au moins 2 enseignants : ${count}');
+print('Nombre de cours qui ont eu au moins 2 enseignants : ${nombre}');
       
 // 6. Quels sont les 2 cours du DIM (débutant par 8) ou du DSA (débutant par 6) ayant été donnés le plus souvent et combien de fois ont-ils ete offerts?
+print("\n-------------------------------------")
+print("6 - Les deux cours du DIM ou DSA qui ont étaient les plus offerts")
+print("-------------------------------------\n")
 cours_DIM_DSA = { $or: [ { "cours.sigle": /^8/ }, { "cours.sigle": /^6/ } ] }
 printResult(cours.find(
        cours_DIM_DSA,
-        { "cours.sigle": true, "nb_offres": true }
-    ).sort({ nb_offres: -1 }).limit(2));
+        { "cours.sigle": true, "nombre_de_fois_offert": true }
+    ).sort({ nombre_de_fois_offert: -1 }).limit(2));
     
 // 7. Quels cours sont donnés à l'automne et à l'hiver ?
 
