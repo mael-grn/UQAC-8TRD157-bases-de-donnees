@@ -30,7 +30,7 @@ print("1 - Corriger le nom de la cle pour l'enseignant actuel du cours 8TRD157")
 print("-------------------------------------\n")
 print("Modification de la typo ...");
 
-cours.update({"cours.sigle":"8TRD157"},
+cours.updateOne({"cours.sigle":"8TRD157"},
         {
                 $set: {enseignant_actuel:"Jimmy Girard-Nault"},
                 $unset :  {enseignat_actuel: 1}
@@ -57,7 +57,12 @@ db.collection.updateOne(
         { cours }, 
         { $addToSet: { "anciens_enseignants": { $each: ["Michel Louvain", "Rick Ashtley", "Elon Musk"] } } }
       );
-      
+
+printResult(cours.find(
+        {"cours.sigle":"8INF433"},
+        { _id: false, "cours.nom":true, "anciens_enseignants":true}
+));
+
 
 // 4. Après avoir parlé au département des ressources humaines, vous décidez d'enlever "Michel Louvain" car ils ne sera plus professeur à l'université.
 
