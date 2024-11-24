@@ -53,7 +53,7 @@ print("\n-------------------------------------")
 print("3 - Ajout des 3 professeurs au cours 8INF433")
 print("-------------------------------------\n")
 cours = {"cours.sigle" : "8INF433"};
-db.collection.updateOne(
+cours.updateOne(
         { cours }, 
         { $addToSet: { "anciens_enseignants": { $each: ["Michel Louvain", "Rick Ashtley", "Elon Musk"] } } }
       );
@@ -65,11 +65,24 @@ printResult(cours.find(
 
 
 // 4. Après avoir parlé au département des ressources humaines, vous décidez d'enlever "Michel Louvain" car ils ne sera plus professeur à l'université.
+print("\n-------------------------------------")
+print("4 - Supression du professeur Michel Louvain")
+print("-------------------------------------\n")
+
+
+
 
 // Pour préparer des réponse aux question fréquente des étudiants, vous décidez de faire une peu d'exploration dans vos données
 
 // 5. Combien de cours on eu moins de 2 enseignants ?
-
+print("\n-------------------------------------")
+print("5 - Supression du professeur Michel Louvain")
+print("-------------------------------------\n")
+print("Nombre de cours qui ont eu au moins 2 enseignants : ")
+printResult(cours.countDocuments({
+        $expr: { $eq: [{ $size: "$anciens_enseignants" }, 1] }
+      }));
+      
 // 6. Quels sont les 2 cours du DIM (débutant par 8) ou du DSA (débutant par 6) ayant été donnés le plus souvent et combien de fois ont-ils ete offerts?
 
 // 7. Quels cours sont donnés à l'automne et à l'hiver ?
