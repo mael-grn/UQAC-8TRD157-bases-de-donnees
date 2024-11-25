@@ -114,8 +114,8 @@ print("-------------------------------------\n")
 
 printResult(cours.find(
         {
-             "session": {$and:["Automne", "Hiver"]}   
-        }
+             "session": {$all:["Automne", "Hiver"]}   
+        }, { "_id": false, "session": true, "cours.sigle":true }
 ))
 
 // 8. Quel est le cours ayant eu son local officiel au P1-6350 13 fois ?
