@@ -75,14 +75,14 @@ print("\n-------------------------------------")
 print("4 - Supression du professeur Michel Louvain")
 print("-------------------------------------\n")
 
-// cours.updateOne(
-//         { $pull: { "anciens_enseignants": "Michel Louvain" } }
-//     );
+cours.updateOne(
+        { $pull: { "anciens_enseignants": "Michel Louvain" } }
+    );
     
-//     printResult(cours.find(
-//         { "cours.sigle": "8INF433" },
-//         { _id: false, "cours.nom": true, "anciens_enseignants": true }
-// ));
+    printResult(cours.find(
+        { "cours.sigle": "8INF433" },
+        { _id: false, "cours.nom": true, "anciens_enseignants": true }
+));
 
 // Pour préparer des réponse aux question fréquente des étudiants, vous décidez de faire une peu d'exploration dans vos données
 
@@ -104,7 +104,7 @@ cours_DIM_DSA = { $or: [ { "cours.sigle": /^8/ }, { "cours.sigle": /^6/ } ] }
 printResult(cours.find(
        cours_DIM_DSA,
         { "cours.sigle": true, "nombre_de_fois_offert": true }
-    ).sort({ nombre_de_fois_offert: -1 }));
+    ).sort({ nombre_de_fois_offert: -1 }).limit(2));
     
 // 7. Quels cours sont donnés à l'automne et à l'hiver ?
 print("\n-------------------------------------")
@@ -113,7 +113,7 @@ print("-------------------------------------\n")
 
 printResult(cours.find(
         {
-             "session": {$all: ["Automne", "Hiver"]}   
+             "session": {$and: ["Automne", "Hiver"]}   
         }
 ))
 
@@ -125,7 +125,7 @@ print("-------------------------------------\n")
 printResult(cours.find({
         "local_officiel.nombre_de_cours": 13,
         "local_officiel.local": "P1-6350"
-}))
+}, {_id:false, "cours.sigle":true, "local_officiel.nombre_de_cours":true, "local_officiel.local":true}));
 // 9. Quel est le cours le plus constant en terme de nombre d'étudiants? On cherche un cours qui a toujours eu entre 30 et 60 étudiants
 print("\n-------------------------------------")
 print("9 - Cours ayant eu un nombre d'étudiant constant")
@@ -133,7 +133,7 @@ print("-------------------------------------\n")
 printResult(cours.find(
         { "nombre_etudiants": { 
                 $not: {
-                        $elemMatch: {$gte: 30, $lte: 60} 
+                        $elemMatch: {$gte: 30, $lte: 60}
                 }
         }
     }));    
