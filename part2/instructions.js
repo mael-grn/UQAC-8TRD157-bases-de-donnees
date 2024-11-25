@@ -114,7 +114,7 @@ print("-------------------------------------\n")
 
 printResult(cours.find(
         {
-             "session": {$and: ["Automne", "Hiver"]}   
+             "session": {$and:["Automne", "Hiver"]}   
         }
 ))
 
