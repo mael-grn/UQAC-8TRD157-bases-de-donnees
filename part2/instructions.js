@@ -124,8 +124,12 @@ print("8 - Cours ayant eu son local officiel au P1-6350 13 fois")
 print("-------------------------------------\n")
 
 printResult(cours.find({
-        "local_officiel.nombre_de_cours": 13,
-        "local_officiel.local": "P1-6350"
+        "local_officiel":{
+                $elemMatch:{
+                        "nombre_de_cours": 13,
+                        "local": "P1-6350"
+                }
+        }
 }, {_id:false, "cours.sigle":true, "local_officiel.nombre_de_cours":true, "local_officiel.local":true}));
 // 9. Quel est le cours le plus constant en terme de nombre d'étudiants? On cherche un cours qui a toujours eu entre 30 et 60 étudiants
 print("\n-------------------------------------")
@@ -137,4 +141,5 @@ printResult(cours.find(
                         $elemMatch: {$gte: 30, $lte: 60}
                 }
         }
-    }));    
+    }, {"_id":false, "cours.sigle":true, "nombre_etudiants":true}
+));    
