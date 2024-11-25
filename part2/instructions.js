@@ -137,9 +137,13 @@ print("9 - Cours ayant eu un nombre d'étudiant constant")
 print("-------------------------------------\n")
 printResult(cours.find(
         {"nombre_etudiants": {
-                $allMatch: {
-                        $gte: 30,
-                        $lte: 60
+                $not: {
+                $elemMatch: { $lt: 30 }
+                }
+        },
+        "nombre_etudiants": {
+                $not: {
+                $elemMatch: { $gt: 60 }
                 }
         }
     }, {"_id":false, "cours.sigle":true, "nombre_etudiants":true}
