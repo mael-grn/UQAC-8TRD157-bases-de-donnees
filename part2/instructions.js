@@ -56,7 +56,9 @@ print("\n-------------------------------------")
 print("3 - Ajout des 3 professeurs au cours 8INF433")
 print("-------------------------------------\n")
 print("cours avant modif :")
-printResult(cours.find({"cours.sigle": "8INF433"}));
+printResult(cours.find({"cours.sigle": "8INF433"},
+        {_id: false,  "cours.nom":true, "anciens_enseignants":true}
+));
 cours.updateOne(
         {"cours.sigle": "8INF433"}, 
         { $addToSet: { "anciens_enseignants": { $each: ["Michel Louvain", "Rick Ashtley", "Elon Musk"] } } }
@@ -92,7 +94,7 @@ print("-------------------------------------\n")
 let nombre = cours.countDocuments({
         $expr: { $gte: [{ $size: "$anciens_enseignants" }, 2] }
       });
-print('Nombre de cours qui ont eu au moins 2 enseignants : ${nombre}');
+print("Nombre de cours qui ont eu au moins 2 enseignants :" + nombre);
       
 // 6. Quels sont les 2 cours du DIM (débutant par 8) ou du DSA (débutant par 6) ayant été donnés le plus souvent et combien de fois ont-ils ete offerts?
 print("\n-------------------------------------")
@@ -102,14 +104,14 @@ cours_DIM_DSA = { $or: [ { "cours.sigle": /^8/ }, { "cours.sigle": /^6/ } ] }
 printResult(cours.find(
        cours_DIM_DSA,
         { "cours.sigle": true, "nombre_de_fois_offert": true }
-    ).sort({ nombre_de_fois_offert: -1 }).limit(2));
+    ).sort({ nombre_de_fois_offert: -1 }));
     
 // 7. Quels cours sont donnés à l'automne et à l'hiver ?
 print("\n-------------------------------------")
 print("7 - Cours donnés à l'automne et à l'hiver")
 print("-------------------------------------\n")
 
-printResultat(cours.find(
+printResult(cours.find(
         {
              "session": {$all: ["Automne", "Hiver"]}   
         }
