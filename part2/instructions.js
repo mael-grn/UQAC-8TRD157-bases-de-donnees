@@ -142,14 +142,11 @@ printResult(cours.find({
                 $elemMatch: { 
                     $lt: 30
                 }
-            }
-        },
-        "nombre_etudiants": { 
-            $not: { 
+            }, $not: { 
                 $elemMatch: { 
                     $gt: 60
                 }
             }
-        }
+        },
     }, {"_id":false, "cours.sigle":true, "nombre_etudiants":true}
 ));    
