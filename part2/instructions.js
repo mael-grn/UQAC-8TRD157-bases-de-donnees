@@ -75,11 +75,12 @@ print("\n-------------------------------------")
 print("4 - Supression du professeur Michel Louvain")
 print("-------------------------------------\n")
 
-cours.updateOne(
+cours.updateMany(
+        { "anciens_enseignants": "Michel Louvain" },
         { $pull: { "anciens_enseignants": "Michel Louvain" } }
-    );
+)
     
-    printResult(cours.find(
+printResult(cours.find(
         { "cours.sigle": "8INF433" },
         { _id: false, "cours.nom": true, "anciens_enseignants": true }
 ));
