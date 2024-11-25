@@ -138,7 +138,7 @@ print("-------------------------------------\n")
 printResult(cours.find(
         { "nombre_etudiants": { 
                 $not: {
-                        $elemMatch: {$gte: 30, $lte: 60}
+                        $elemMatch: {$gt: 60, $lt: 30}
                 }
         }
     }, {"_id":false, "cours.sigle":true, "nombre_etudiants":true}
